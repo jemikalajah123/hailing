@@ -1,5 +1,5 @@
 import { createContext } from 'react'
 
-const farmerContext = createContext();
+const adminContext = createContext();
 
-export default farmerContext
+export default adminContext

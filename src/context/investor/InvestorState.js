@@ -1,28 +1,28 @@
 import React, { useReducer } from 'react'
-import farmerContext from './farmerContext'
-import farmerReducer from './farmerReducer'
+import investorContext from './investorContext'
+import investorReducer from './investorReducer'
 import{
     SET_LOADING
 } from '../types'
 
 
-const FarmerState = props => {
+const InvestorState = props => {
     const initialState = {
         loading: false
     }
 
-    const [ state, dispatch ] = useReducer(farmerReducer, initialState);    
+    const [ state, dispatch ] = useReducer(investorReducer, initialState);    
 
     //Set Loading
     const setLoading = () => dispatch({ type: SET_LOADING })
 
-    return <farmerContext.Provider
+    return <investorContext.Provider
         value={{
             loading: state.loading,
             setLoading
         }}>
             {props.children}
-    </farmerContext.Provider>
+    </investorContext.Provider>
 }
 
-export default FarmerState;
+export default InvestorState;
