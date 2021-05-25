@@ -6,6 +6,9 @@ import OperatorState from './context/operator/OperatorState'
 import Header from './components/layouts/Header';
 import Footer from './components/layouts/Footer';
 import FarmerScreen from "./screens/farmer/FarmerScreen";
+import AdminScreen from "./screens/admin/AdminScreen";
+import OperatorScreen from "./screens/operator/OperatorScreen";
+import InvestorScreen from "./screens/investor/InvestorScreen";
 import React from "react";
 
 const App = () => {
@@ -17,6 +20,9 @@ const App = () => {
                 <Router className='App'>
                   <Header />
                     <Route path='/farmer' component={FarmerScreen} />
+                    <Route path='/admin' component={AdminScreen} />
+                    <Route path='/operator' component={OperatorScreen} />
+                    <Route path='/investor' component={InvestorScreen} />
                   <Footer />
                 </Router>
             </OperatorState>
