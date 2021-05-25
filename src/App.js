@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import FarmerState from './context/farmer/FarmerState'
-import AdminState from './context/Admin/FarmerState'
-import InvestorState from './context/Investor/FarmerState'
-import OperatorState from './context/Operator/FarmerState'
+import AdminState from './context/admin/AdminState'
+import InvestorState from './context/investor/InvestorState'
+import OperatorState from './context/operator/OperatorState'
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Sidebar from './components/Sidebar';
