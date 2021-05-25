@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Farmer() {
+const Farmer = () => {
     return(
         <div class="content-wrapper">
             <div class="container-fluid">

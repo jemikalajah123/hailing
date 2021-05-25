@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Header() {
+const Header = () => {
     return(
         <header className="main-header-top hidden-print">
             <a href="index.html" className="logo"><img className="img-fluid able-logo" src="assets/images/logo.png" alt="Theme-logo"></img></a>

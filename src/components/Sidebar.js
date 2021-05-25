@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Sidebar() {
+const Sidebar = () => {
     return(
         <aside className="main-sidebar hidden-print ">
             <section className="sidebar" id="sidebar-scroll">
