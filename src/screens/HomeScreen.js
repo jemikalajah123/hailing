@@ -1,7 +1,7 @@
 import React from 'react';
 import Farmer from "../components/Farmer";
 
-function HomeScreen() {
+const HomeScreen = () => {
     return(
         <div>
            <Farmer />
