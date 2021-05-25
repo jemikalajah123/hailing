@@ -1,5 +1,5 @@
 import React from 'react';
-import Farmer from "../components/Farmer";
+import Farmer from "./farmer/FarmerDashboard";
 
 const HomeScreen = () => {
     return(

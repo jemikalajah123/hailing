@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Sidebar = () => {
+const FarmerSidebar = () => {
     return(
         <aside className="main-sidebar hidden-print ">
             <section className="sidebar" id="sidebar-scroll">
@@ -106,4 +106,4 @@ const Sidebar = () => {
 };
 
 
-export default Sidebar;
+export default FarmerSidebar;

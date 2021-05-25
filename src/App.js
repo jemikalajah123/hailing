@@ -3,10 +3,9 @@ import FarmerState from './context/farmer/FarmerState'
 import AdminState from './context/admin/AdminState'
 import InvestorState from './context/investor/InvestorState'
 import OperatorState from './context/operator/OperatorState'
-import Header from './components/Header';
-import Footer from './components/Footer';
-import Sidebar from './components/Sidebar';
-import HomeScreen from "./screens/HomeScreen";
+import Header from './components/layouts/Header';
+import Footer from './components/layouts/Footer';
+import FarmerScreen from "./screens/farmer/FarmerScreen";
 import React from "react";
 
 const App = () => {
@@ -17,8 +16,7 @@ const App = () => {
             <OperatorState>
                 <Router className='App'>
                   <Header />
-                  <Sidebar />
-                    <Route path='/' component={HomeScreen} exact/>
+                    <Route path='/farmer' component={FarmerScreen} />
                   <Footer />
                 </Router>
             </OperatorState>
