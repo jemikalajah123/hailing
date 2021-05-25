@@ -2,7 +2,7 @@ import{
     SET_LOADING,
 } from '../types'
 
-const farmerReducer = (state, action) => {
+const operatorReducer = (state, action) => {
     switch(action.type){
         
         case SET_LOADING:
@@ -15,4 +15,4 @@ const farmerReducer = (state, action) => {
     }
 }
 
-export default farmerReducer
+export default operatorReducer
