@@ -11,43 +11,43 @@ const FarmerSidebar = () => {
                         </a>
                     </li>
                     <li className="treeview">
-                        <a className="waves-effect waves-dark" href="#!"><i className="icon-briefcase"></i><span> Equipment Requests</span></a>  
+                        <a className="waves-effect waves-dark" href="#!"><i class="fas fa-briefcase"></i><span> Equipment Requests</span></a>  
                     </li>
                     <li>
-                        <a className="waves-effect waves-dark" href="/farmer/new_request"> New Request</a>
+                        <a className="waves-effect waves-dark" href="#!"><i class="far fa-plus-square"></i> New Request</a>
                     </li>
                     <li>
-                        <a className="waves-effect waves-dark" href="/farmer/view_requests">View Requests</a>
+                        <a className="waves-effect waves-dark" href="#!"><i class="fas fa-eye"></i>View Requests</a>
                     </li>
 
                     <li className="treeview">
-                        <a className="waves-effect waves-dark" href="#!"><i className="icon-chart"></i><span>Equipment Report</span></a>   
+                        <a className="waves-effect waves-dark" href="#!"><i class="fas fa-chart-line"></i><span>Equipment Report</span></a>   
                     </li>
                     <li>
-                        <a className="waves-effect waves-dark" href="float-chart.html"> Rate Job</a>
+                        <a className="waves-effect waves-dark" href="#!"><i class="far fa-smile"></i>Rate Job</a>
                     </li>
                     <li>
-                        <a className="waves-effect waves-dark" href="morris-chart.html">Complaints</a>
+                        <a className="waves-effect waves-dark" href="#!"><i class="fas fa-comments"></i>Complaints</a>
                     </li>
 
                     <li className="treeview">
-                        <a className="waves-effect waves-dark" href="#!"><i className="icon-book-open"></i><span> Farm</span></a>
+                        <a className="waves-effect waves-dark" href="#!"><i class="fas fa-tractor"></i><span> Farm</span></a>
                     </li>
                     <li>
-                        <a className="waves-effect waves-dark" href="form-elements-bootstrap.html">Add Farm</a>
+                        <a className="waves-effect waves-dark" href="#!"><i class="fas fa-plus-circle"></i>Add Farm</a>
                     </li>
                     <li>
-                        <a className="waves-effect waves-dark" href="form-elements-advance.html"> Manage Farm</a>
+                        <a className="waves-effect waves-dark" href="#!"><i class="fas fa-tasks"></i> Manage Farm</a>
                     </li>
 
                     <li className="treeview">
-                        <a className="waves-effect waves-dark" href="#!"><i className="icon-user"></i><span>Profile</span></a>
+                        <a className="waves-effect waves-dark" href="#!"><i class="fas fa-user"></i><span>Profile</span></a>
                     </li>
                     <li>
                         <a className="waves-effect waves-dark" href="#!"><i class="fas fa-unlock-alt"></i>Change Password</a>
                     </li>
                     <li className="treeview">
-                        <a className="waves-effect waves-dark" href="#!"><i class="fas fa-key"></i>Edit Details</a>
+                        <a className="waves-effect waves-dark" href="#!"><i class="fas fa-user-edit"></i>Edit Details</a>
                     </li>
                 </ul>
             </section>
