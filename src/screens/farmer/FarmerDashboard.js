@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Farmer = () => {
+const FarmerDashboard = () => {
     return(
         <div class="content-wrapper">
             <div class="container-fluid">
@@ -248,4 +248,4 @@ const Farmer = () => {
 };
 
 
-export default Farmer;
+export default FarmerDashboard;
