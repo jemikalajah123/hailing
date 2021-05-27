@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 
 const FarmerSidebar = () => {
     return(
@@ -19,7 +20,7 @@ const FarmerSidebar = () => {
                     <li>
                         <a className="waves-effect waves-dark" href="#!"><i class="fas fa-eye"></i>View Requests</a>
                     </li>
-
+                    <hr></hr>
                     <li className="treeview">
                         <a className="waves-effect waves-dark" href="#!"><i class="fas fa-chart-line"></i><span>Equipment Report</span></a>   
                     </li>
@@ -29,17 +30,17 @@ const FarmerSidebar = () => {
                     <li>
                         <a className="waves-effect waves-dark" href="#!"><i class="fas fa-comments"></i>Complaints</a>
                     </li>
-
+                    <hr></hr>
                     <li className="treeview">
                         <a className="waves-effect waves-dark" href="#!"><i class="fas fa-tractor"></i><span> Farm</span></a>
                     </li>
                     <li>
-                        <a className="waves-effect waves-dark" href="#!"><i class="fas fa-plus-circle"></i>Add Farm</a>
+                        <Link to="/farmer/farm/add" className="waves-effect waves-dark"><i class="fas fa-plus-circle"></i>Add Farm</Link>
                     </li>
                     <li>
-                        <a className="waves-effect waves-dark" href="#!"><i class="fas fa-tasks"></i> Manage Farm</a>
+                        <Link to="/farmer/farm/manage" className="waves-effect waves-dark"><i class="fas fa-tasks"></i> Manage Farm</Link>
                     </li>
-
+                    <hr></hr>
                     <li className="treeview">
                         <a className="waves-effect waves-dark" href="#!"><i class="fas fa-user"></i><span>Profile</span></a>
                     </li>
