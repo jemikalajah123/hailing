@@ -4,7 +4,6 @@ import AdminState from './context/admin/AdminState'
 import InvestorState from './context/investor/InvestorState'
 import OperatorState from './context/operator/OperatorState'
 import Header from './components/layouts/Header';
-import Footer from './components/layouts/Footer';
 import FarmerScreen from "./screens/farmer/FarmerScreen";
 import AddFarm from "./screens/farmer/AddFarm";
 import ManageFarm from "./screens/farmer/ManageFarm";
@@ -30,7 +29,6 @@ const App = () => {
                       <Route path='/operator' component={OperatorScreen} />
                       <Route path='/investor' component={InvestorScreen} />
                     </Switch> 
-                  <Footer />
                 </div>
               </Router>
             </OperatorState>
