@@ -2,17 +2,19 @@ import React, { useReducer } from 'react'
 import farmerContext from './farmerContext'
 import farmerReducer from './farmerReducer'
 import{
-    SET_LOADING
+    SET_LOADING,
 } from '../types'
 
 
 const FarmerState = props => {
     const initialState = {
-        loading: false
+        loading: false,
+        longitude: null,
+        latitude: null
     }
 
-    const [ state, dispatch ] = useReducer(farmerReducer, initialState);    
-
+    const [ state, dispatch ] = useReducer(farmerReducer, initialState);
+    
     //Set Loading
     const setLoading = () => dispatch({ type: SET_LOADING })
 

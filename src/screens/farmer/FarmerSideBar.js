@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 
 const FarmerSidebar = () => {
     return(
@@ -11,43 +12,43 @@ const FarmerSidebar = () => {
                         </a>
                     </li>
                     <li className="treeview">
-                        <a className="waves-effect waves-dark" href="#!"><i class="fas fa-briefcase"></i><span> Equipment Requests</span></a>  
+                        <a className="waves-effect waves-dark" href="#!"><i className="fas fa-briefcase"></i><span> Equipment Requests</span></a>  
                     </li>
                     <li>
-                        <a className="waves-effect waves-dark" href="#!"><i class="far fa-plus-square"></i> New Request</a>
+                        <a className="waves-effect waves-dark" href="#!"><i className="far fa-plus-square"></i> New Request</a>
                     </li>
                     <li>
-                        <a className="waves-effect waves-dark" href="#!"><i class="fas fa-eye"></i>View Requests</a>
+                        <a className="waves-effect waves-dark" href="#!"><i className="fas fa-eye"></i>View Requests</a>
                     </li>
-
+                    <hr></hr>
                     <li className="treeview">
-                        <a className="waves-effect waves-dark" href="#!"><i class="fas fa-chart-line"></i><span>Equipment Report</span></a>   
+                        <a className="waves-effect waves-dark" href="#!"><i className="fas fa-chart-line"></i><span>Equipment Report</span></a>   
                     </li>
                     <li>
-                        <a className="waves-effect waves-dark" href="#!"><i class="far fa-smile"></i>Rate Job</a>
+                        <a className="waves-effect waves-dark" href="#!"><i className="far fa-smile"></i>Rate Job</a>
                     </li>
                     <li>
-                        <a className="waves-effect waves-dark" href="#!"><i class="fas fa-comments"></i>Complaints</a>
+                        <a className="waves-effect waves-dark" href="#!"><i className="fas fa-comments"></i>Complaints</a>
                     </li>
-
+                    <hr></hr>
                     <li className="treeview">
-                        <a className="waves-effect waves-dark" href="#!"><i class="fas fa-tractor"></i><span> Farm</span></a>
+                        <a className="waves-effect waves-dark" href="#!"><i className="fas fa-tractor"></i><span> Farm</span></a>
                     </li>
                     <li>
-                        <a className="waves-effect waves-dark" href="#!"><i class="fas fa-plus-circle"></i>Add Farm</a>
+                        <Link to="/farmer/farm/add" className="waves-effect waves-dark"><i className="fas fa-plus-circle"></i>Add Farm</Link>
                     </li>
                     <li>
-                        <a className="waves-effect waves-dark" href="#!"><i class="fas fa-tasks"></i> Manage Farm</a>
+                        <Link to="/farmer/farm/manage" className="waves-effect waves-dark"><i className="fas fa-tasks"></i> Manage Farm</Link>
                     </li>
-
+                    <hr></hr>
                     <li className="treeview">
-                        <a className="waves-effect waves-dark" href="#!"><i class="fas fa-user"></i><span>Profile</span></a>
+                        <a className="waves-effect waves-dark" href="#!"><i className="fas fa-user"></i><span>Profile</span></a>
                     </li>
                     <li>
-                        <a className="waves-effect waves-dark" href="#!"><i class="fas fa-unlock-alt"></i>Change Password</a>
+                        <a className="waves-effect waves-dark" href="#!"><i className="fas fa-unlock-alt"></i>Change Password</a>
                     </li>
                     <li className="treeview">
-                        <a className="waves-effect waves-dark" href="#!"><i class="fas fa-user-edit"></i>Edit Details</a>
+                        <a className="waves-effect waves-dark" href="#!"><i className="fas fa-user-edit"></i>Edit Details</a>
                     </li>
                 </ul>
             </section>
