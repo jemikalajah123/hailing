@@ -15,10 +15,10 @@ const FarmerSidebar = () => {
                         <a className="waves-effect waves-dark" href="#!"><i className="fas fa-briefcase"></i><span> Equipment Requests</span></a>  
                     </li>
                     <li>
-                        <a className="waves-effect waves-dark" href="#!"><i className="far fa-plus-square"></i> New Request</a>
+                        <Link className="waves-effect waves-dark" to="/farmer/farm/equipment"><i className="far fa-plus-square"></i> New Request</Link>
                     </li>
                     <li>
-                        <a className="waves-effect waves-dark" href="#!"><i className="fas fa-eye"></i>View Requests</a>
+                        <Link className="waves-effect waves-dark" to="/farmer/farm/equipment/view"><i className="fas fa-eye"></i>View Requests</Link>
                     </li>
                     <hr></hr>
                     <li className="treeview">

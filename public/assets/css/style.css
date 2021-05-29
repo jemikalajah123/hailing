@@ -6,3 +6,9 @@
 .button-container{
     display: flex !important;
 }
+.back{
+    margin-top: 20px;
+}
+.equipment{
+    margin-top: 50px;
+}

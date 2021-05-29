@@ -3,7 +3,7 @@ import React from 'react';
 const Header = () => {
     return(
         <header className="main-header-top hidden-print">
-            <a href="index.html" className="logo"><img className="img-fluid able-logo" src="assets/images/logo.png" alt="Theme-logo"></img></a>
+            <a href="index.html" className="logo"><img className="img-fluid able-logo" src="/assets/images/logo.png" alt="Theme-logo"></img></a>
             <nav className="navbar navbar-static-top">
                 <a href="#!" data-toggle="offcanvas" className="sidebar-toggle"></a>
                 <ul className="top-nav lft-nav">
@@ -25,7 +25,7 @@ const Header = () => {
                                 </li>
                                 <li className="bell-notification">
                                     <a href="javascript:;" className="media">
-                                        <span className="media-left media-icon"><img className="img-circle" src="assets/images/avatar-1.png" alt="User Image"></img></span>
+                                        <span className="media-left media-icon"><img className="img-circle" src="/assets/images/avatar-1.png" alt="User Image"></img></span>
                                         <div className="media-body"><span
                                             className="block">Lisa sent you a mail</span><span
                                             className="text-muted block-time">2min ago</span></div>
@@ -33,7 +33,7 @@ const Header = () => {
                                 </li>
                                 <li className="bell-notification">
                                     <a href="javascript:;" className="media">
-                                        <span className="media-left media-icon"><img className="img-circle" src="assets/images/avatar-2.png" alt="User Image"></img></span>
+                                        <span className="media-left media-icon"><img className="img-circle" src="/assets/images/avatar-2.png" alt="User Image"></img></span>
                                         <div className="media-body"><span
                                             className="block">Server Not Working</span><span
                                             className="text-muted block-time">20min ago</span></div>
@@ -41,7 +41,7 @@ const Header = () => {
                                 </li>
                                 <li className="bell-notification">
                                     <a href="javascript:;" className="media"><span className="media-left media-icon">
-                                        <img className="img-circle" src="assets/images/avatar-3.png" alt="User Image"></img></span>
+                                        <img className="img-circle" src="/assets/images/avatar-3.png" alt="User Image"></img></span>
                                         <div className="media-body"><span
                                             className="block">Transaction xyz complete</span><span
                                             className="text-muted block-time">3 hours ago</span></div>
@@ -115,23 +115,23 @@ const Header = () => {
                             <div className="dummy-column">
                                 <h2>Popular</h2>
                                 <a className="dummy-media-object" href="#!">
-                                    <img src="assets/images/avatar-1.png" alt="PagePreloadingEffect"/>
+                                    <img src="/assets/images/avatar-1.png" alt="PagePreloadingEffect"/>
                                     <h3>Page Preloading Effect</h3>
                                 </a>
 
                                 <a className="dummy-media-object" href="#!">
-                                    <img src="assets/images/avatar-1.png" alt="DraggableDualViewSlideshow"/>
+                                    <img src="/assets/images/avatar-1.png" alt="DraggableDualViewSlideshow"/>
                                     <h3>Draggable Dual-View Slideshow</h3>
                                 </a>
                             </div>
                             <div className="dummy-column">
                                 <h2>Recent</h2>
                                 <a className="dummy-media-object" href="#!">
-                                    <img src="assets/images/avatar-1.png" alt="TooltipStylesInspiration"/>
+                                    <img src="/assets/images/avatar-1.png" alt="TooltipStylesInspiration"/>
                                     <h3>Tooltip Styles Inspiration</h3>
                                 </a>
                                 <a className="dummy-media-object" href="#!">
-                                    <img src="assets/images/avatar-1.png" alt="NotificationStyles"/>
+                                    <img src="/assets/images/avatar-1.png" alt="NotificationStyles"/>
                                     <h3>Notification Styles Inspiration</h3>
                                 </a>
                             </div>

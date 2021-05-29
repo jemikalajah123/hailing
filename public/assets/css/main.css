@@ -5419,7 +5419,9 @@ svg#sun {
 
 .tab-timeline .slide {
   bottom: -1px; }
-
+.image{
+  height: 170px;
+}
 .image-upload input {
   visibility: hidden;
   max-width: 0;
