@@ -7,7 +7,8 @@ import{
     FARM_ERROR,
     FARM_TYPE,
     FARM_STATE,
-    FARM_LGA
+    FARM_LGA,
+    GET_FARMS
 } from '../types'
 
 
@@ -17,18 +18,29 @@ const FarmerState = props => {
         farmTypes: null,
         farmStates: null,
         farmLgas: null,
+        farms: null,
         error: null
     }
 
     const [ state, dispatch ] = useReducer(farmerReducer, initialState);
 
+    //Token
+    var token  = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNGQ1MTNkM2QiLCJyb2xlIjoiNGQ1MTNkM2QiLCJpYXQiOjE2MjIwMDIwNDR9.fdlBef1fihWEaWEWflD1gN3luUHITeKvtGiFCkQIO8s";
+
+    //Set up axios headers
+    const authAxios = axios.create({
+        headers: {
+            authorization: token
+        }
+    })
+
     //Get Farm Type
     const getFarmType = async () => {
         try {
-            const res = await axios.get('https://hailing-backend.herokuapp.com/user/farmer/get_farm_type')
+            const res = await authAxios.get('https://hailing-backend.herokuapp.com/user/farmer/get_farm_type')
             dispatch({
                 type: FARM_TYPE,
-                payload: res.data
+                payload: res.data.data
             })
         } catch (error) {
             dispatch({
@@ -68,6 +80,22 @@ const FarmerState = props => {
             })
         }
     }
+
+    //Get Farms
+    const getFarms = async () => {
+        try {
+            const res = await authAxios.get('https://hailing-backend.herokuapp.com/user/farmer/get_farms')
+            dispatch({
+                type: GET_FARMS,
+                payload: res.data.data
+            })
+        } catch (error) {
+            dispatch({
+                type: FARM_ERROR,
+                payload: error
+            })
+        }
+    }
     
     //Set Loading
     const setLoading = () => dispatch({ type: SET_LOADING })
@@ -79,10 +107,12 @@ const FarmerState = props => {
             farmTypes: state.farmTypes,
             farmStates: state.farmStates,
             farmLgas: state.farmLgas,
+            farms: state.farms,
             setLoading,
             getFarmType,
             getStates,
-            getLga
+            getLga,
+            getFarms
         }}>
             {props.children}
     </farmerContext.Provider>

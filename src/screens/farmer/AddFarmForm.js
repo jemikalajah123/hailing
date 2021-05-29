@@ -6,13 +6,13 @@ const AddFarmForm = () => {
 
     const FarmerContext = useContext(farmerContext);
 
-    const { getFarmType, getStates, getLga, farmLgas, farmStates } = FarmerContext;
+    const { getFarmType, getStates, getLga, farmLgas, farmStates, farmTypes } = FarmerContext;
 
     useEffect(() => { 
 
         //Get users location when the component mounts
         getLocation();
-        //getFarmType();
+        getFarmType();
         getStates();
        //eslint-disable-next-line
     }, []);
@@ -105,18 +105,17 @@ const AddFarmForm = () => {
                                         </div>
                                         <div class="form-group">
                                             <label htmlFor="farmType" class="form-control-label">Farm Type</label>
-                                                <select class="form-control " name="farmType" id="farmType">
-                                                    <option>1</option>
-                                                    <option>2</option>
-                                                    <option>3</option>
-                                                    <option>4</option>
-                                                    <option>5</option>
+                                                <select class="form-control " name="farmType" id="farmType" onChange={e => setFarmType(e.target.value)}>
+                                                {farmTypes !== null ?
+                                                        farmTypes.map(farmType => (
+                                                            <option value={farmType.id} key={farmType.id}>{farmType.name}</option>
+                                                        )) 
+                                                    : <option>States could not be loaded</option>
+                                                    }
+                                                    
                                                 </select>
                                         </div>
-                                        {/* <div className="form-group">
-                                            <label htmlFor="farmType" className="form-control-label">Farm Type</label>
-                                            <input type="text" className="form-control" name='farmType' value={farmType} onChange={e => setFarmType(e.target.value)}  placeholder="Cocoa" />
-                                        </div> */}
+                                       
                                         <div class="form-group">
                                             <label htmlFor="farmState" class="form-control-label">Farm State</label>
                                                 <select class="form-control " name="farmState" id="farmState" onChange={e => setFarmState(e.target.value)}>
