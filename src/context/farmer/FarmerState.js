@@ -9,7 +9,10 @@ import{
     FARM_STATE,
     FARM_LGA,
     GET_FARMS,
-    ADD_FARM
+    ADD_FARM,
+    SET_CURRENT,
+    CLEAR_CURRENT,
+    UPDATE_FARM
 } from '../types'
 
 
@@ -20,6 +23,7 @@ const FarmerState = props => {
         farmStates: null,
         farmLgas: null,
         farms: null,
+        current: null,
         error: null
     }
 
@@ -48,6 +52,28 @@ const FarmerState = props => {
             const res = await authAxios.post('https://hailing-backend.herokuapp.com/user/farmer/add_farm', farm, config);
             dispatch({ 
                 type: ADD_FARM, 
+                payload: res.data.data
+               });
+        } catch (error) {
+            dispatch({ 
+                type: FARM_ERROR ,
+                payload: error
+               })
+        }
+    }
+    //Update Farm
+    const updateFarm = async farm => {
+        
+        const config = {
+            headers: {
+                'Content-Type' : 'application/json'
+            }
+        }
+
+        try {
+            const res = await authAxios.put(`https://hailing-backend.herokuapp.com/user/farmer/edit_farm/${farm.id}`, farm, config);
+            dispatch({ 
+                type: UPDATE_FARM, 
                 payload: res.data.data
                });
         } catch (error) {
@@ -120,6 +146,21 @@ const FarmerState = props => {
             })
         }
     }
+
+    //Set Current Farm
+    const setCurrent = farm => {
+        dispatch({ 
+            type: SET_CURRENT,
+            payload: farm 
+        })
+    }
+
+     //Clear Current Farm
+     const clearCurrent = () => {
+        dispatch({
+             type: CLEAR_CURRENT 
+        })
+    }
     
     //Set Loading
     const setLoading = () => dispatch({ type: SET_LOADING })
@@ -132,12 +173,16 @@ const FarmerState = props => {
             farmStates: state.farmStates,
             farmLgas: state.farmLgas,
             farms: state.farms,
+            current: state.current,
             setLoading,
             getFarmType,
             getStates,
             getLga,
             getFarms,
-            addFarm
+            addFarm,
+            setCurrent,
+            clearCurrent,
+            updateFarm
         }}>
             {props.children}
     </farmerContext.Provider>

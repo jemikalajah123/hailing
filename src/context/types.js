@@ -5,3 +5,6 @@ export const FARM_STATE = 'FARM_STATE';
 export const FARM_LGA = 'FARM_LGA';
 export const GET_FARMS = 'GET_FARMS';
 export const ADD_FARM = 'ADD_FARM';
+export const SET_CURRENT = 'SET_CURRENT';
+export const CLEAR_CURRENT = 'CLEAR_CURRENT';
+export const UPDATE_FARM = 'UPDATE_FARM';

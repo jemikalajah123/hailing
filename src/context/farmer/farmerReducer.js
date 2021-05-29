@@ -5,7 +5,10 @@ import{
     FARM_STATE,
     FARM_LGA,
     GET_FARMS,
-    ADD_FARM
+    ADD_FARM,
+    SET_CURRENT,
+    CLEAR_CURRENT,
+    UPDATE_FARM
 } from '../types'
 
 const farmerReducer = (state, action) => {
@@ -39,6 +42,21 @@ const farmerReducer = (state, action) => {
         case ADD_FARM:
             return {
                 farms: [action.payload,...state.farms]
+            }
+        case UPDATE_FARM:
+            return {
+                ...state,
+                farms: state.farms.map(farm => farm.id === action.payload.id ? action.payload : farm)
+            }
+        case SET_CURRENT:
+            return {
+                ...state,
+                current: action.payload
+            }
+        case CLEAR_CURRENT:
+            return {
+                ...state,
+                current: null
             }
         case FARM_ERROR:
             return {
