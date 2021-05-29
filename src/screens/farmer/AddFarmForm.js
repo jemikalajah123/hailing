@@ -6,13 +6,13 @@ const AddFarmForm = () => {
 
     const FarmerContext = useContext(farmerContext);
 
-    const { getFarmType, getStates, farmStates } = FarmerContext;
+    const { getFarmType, getStates, getLga, farmLgas, farmStates } = FarmerContext;
 
     useEffect(() => { 
 
         //Get users location when the component mounts
         getLocation();
-        getFarmType();
+        //getFarmType();
         getStates();
        //eslint-disable-next-line
     }, []);
@@ -25,6 +25,12 @@ const AddFarmForm = () => {
     const [farmAddress, setFarmAddress] = useState('');
     const [longitude, setLongitude] = useState('');
     const [latitude, setLatitude] = useState('');
+
+
+    //If State is not empty, make the call to get Local Government
+    if(farmState !== ''){
+        getLga(farmState);
+    }
 
    
     //Get Users location
@@ -124,9 +130,17 @@ const AddFarmForm = () => {
                                                 </select>
                                         </div>
                                         
-                                        <div className="form-group">
-                                            <label htmlFor="farmLga" className="form-control-label">LGA</label>
-                                            <input type="text" className="form-control" name='farmLga' value={farmLga} onChange={e => setFarmLga(e.target.value)}  placeholder="Ikeja" />
+                                        <div class="form-group">
+                                            <label htmlFor="farmLga" class="form-control-label">Farm Lga</label>
+                                                <select class="form-control " name="farmLga" id="farmState" onChange={e => setFarmLga(e.target.value)}>
+                                                    {farmLgas !== null ?
+                                                        farmLgas.map(farmLga => (
+                                                            <option value={farmLga.id} key={farmLga.id}>{farmLga.name}</option>
+                                                        )) 
+                                                    : <option>Select a state</option>
+                                                    }
+                                                    
+                                                </select>
                                         </div>
                                         <div className="form-group">
                                             <label htmlFor="farmAddress" className="form-control-label">Address</label>

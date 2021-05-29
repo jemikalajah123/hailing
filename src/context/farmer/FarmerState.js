@@ -16,6 +16,7 @@ const FarmerState = props => {
         loading: false,
         farmTypes: null,
         farmStates: null,
+        farmLgas: null,
         error: null
     }
 
@@ -53,20 +54,20 @@ const FarmerState = props => {
         }
     }
     //Get LGA'S
-    // const getLga = async () => {
-    //     try {
-    //         const res = await axios.get('https://hailing-backend.herokuapp.com/generic/get_lga/25')
-    //         dispatch({
-    //             type: FARM_LGA,
-    //             payload: res.data
-    //         })
-    //     } catch (error) {
-    //         dispatch({
-    //             type: FARM_ERROR,
-    //             payload: error
-    //         })
-    //     }
-    // }
+    const getLga = async state_id => {
+        try {
+            const res = await axios.get(`https://hailing-backend.herokuapp.com/generic/get_lga/${state_id}`)
+            dispatch({
+                type: FARM_LGA,
+                payload: res.data.data
+            })
+        } catch (error) {
+            dispatch({
+                type: FARM_ERROR,
+                payload: error
+            })
+        }
+    }
     
     //Set Loading
     const setLoading = () => dispatch({ type: SET_LOADING })
@@ -77,9 +78,11 @@ const FarmerState = props => {
             error: state.error,
             farmTypes: state.farmTypes,
             farmStates: state.farmStates,
+            farmLgas: state.farmLgas,
             setLoading,
             getFarmType,
-            getStates
+            getStates,
+            getLga
         }}>
             {props.children}
     </farmerContext.Provider>

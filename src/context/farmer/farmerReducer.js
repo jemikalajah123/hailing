@@ -24,6 +24,11 @@ const farmerReducer = (state, action) => {
                 ...state,
                 farmStates: action.payload
             }
+        case FARM_LGA:
+            return {
+                ...state,
+                farmLgas: action.payload
+            }
         case FARM_ERROR:
             return {
                 ...state,
