@@ -1,7 +1,23 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import farmerContext from '../../context/farmer/farmerContext'
+import ManageFarmTableRow from './ManageFarmTableRow'
 
 const ManageFarmTable = () => {
+
+   const FarmerContext = useContext(farmerContext);
+
+   const { getFarms, farms } = FarmerContext;
+
+   useEffect(() => { 
+
+      //Get all farmers farms when the component mounts
+      getFarms();
+     //eslint-disable-next-line
+  }, []);
+
+  console.log(farms);
+
     return (
         <div className="wrapper">
             <div className="content-wrapper">
@@ -43,109 +59,17 @@ const ManageFarmTable = () => {
                                        <th>FARM TYPE</th>
                                        <th>STATE</th>
                                        <th>LGA</th>
+                                       <th>CITY</th>
                                        <th>ADDRESS</th>
                                        <th>UPDATE/DELETE</th>
                                     </tr>
                                  </thead>
-                                 <tbody>
-                                    <tr>
-                                       <td>1</td>
-                                       <td>Mark</td>
-                                       <td>Otto</td>
-                                       <td>@mdo</td>
-                                       <td>Ducky</td>
-                                       <td>Ducky</td>
-                                       <td className="button-container">
-                                            <button type="button" className="btn button_style btn-inverse-primary waves-effect waves-light">EDIT</button>
-                                            <button type="button" className="btn button_style btn-inverse-danger waves-effect waves-light">DELETE</button>
-                                       </td>
-                                       
-                                    </tr>
-                                    <tr>
-                                       <td>2</td>
-                                       <td>Jacob</td>
-                                       <td>Thornton</td>
-                                       <td>@fat</td>
-                                       <td>Ducky</td>
-                                       <td>Ducky</td>
-                                       <td className="button-container">
-                                            <button type="button" className="btn button_style btn-inverse-primary waves-effect waves-light">EDIT</button>
-                                            <button type="button" className="btn button_style btn-inverse-danger waves-effect waves-light">DELETE</button>
-                                       </td>
-                                    </tr>
-                                    <tr>
-                                       <td>3</td>
-                                       <td>Larry</td>
-                                       <td>Otto</td>
-                                       <td>@twitter</td>
-                                       <td>Ducky</td>
-                                       <td>Ducky</td>
-                                       <td className="button-container">
-                                            <button type="button" className="btn button_style btn-inverse-primary waves-effect waves-light">EDIT</button>
-                                            <button type="button" className="btn button_style btn-inverse-danger waves-effect waves-light">DELETE</button>
-                                       </td>
-                                    </tr>
-                                    <tr>
-                                       <td>4</td>
-                                       <td>Jacob</td>
-                                       <td>Thornton</td>
-                                       <td>@fat</td>
-                                       <td>Ducky</td>
-                                       <td>Ducky</td>
-                                       <td className="button-container">
-                                            <button type="button" className="btn button_style btn-inverse-primary waves-effect waves-light">EDIT</button>
-                                            <button type="button" className="btn button_style btn-inverse-danger waves-effect waves-light">DELETE</button>
-                                       </td>
-                                    </tr>
-                                    <tr>
-                                       <td>5</td>
-                                       <td>Jacob</td>
-                                       <td>Thornton</td>
-                                       <td>@fat</td>
-                                       <td>Ducky</td>
-                                       <td>Ducky</td>
-                                       <td className="button-container">
-                                            <button type="button" className="btn button_style btn-inverse-primary waves-effect waves-light">EDIT</button>
-                                            <button type="button" className="btn button_style btn-inverse-danger waves-effect waves-light">DELETE</button>
-                                       </td>
-                                    </tr>
-                                    <tr>
-                                       <td>6</td>
-                                       <td>Jacob</td>
-                                       <td>Thornton</td>
-                                       <td>@fat</td>
-                                       <td>Ducky</td>
-                                       <td>Ducky</td>
-                                       <td className="button-container">
-                                            <button type="button" className="btn button_style btn-inverse-primary waves-effect waves-light">EDIT</button>
-                                            <button type="button" className="btn button_style btn-inverse-danger waves-effect waves-light">DELETE</button>
-                                       </td>
-                                    </tr>
-                                    <tr>
-                                       <td>7</td>
-                                       <td>Jacob</td>
-                                       <td>Thornton</td>
-                                       <td>@fat</td>
-                                       <td>Ducky</td>
-                                       <td>Ducky</td>
-                                       <td className="button-container">
-                                            <button type="button" className="btn button_style btn-inverse-primary waves-effect waves-light">EDIT</button>
-                                            <button type="button" className="btn button_style btn-inverse-danger waves-effect waves-light">DELETE</button>
-                                       </td>
-                                    </tr>
-                                    <tr>
-                                       <td>8</td>
-                                       <td>Jacob</td>
-                                       <td>Thornton</td>
-                                       <td>@fat</td>
-                                       <td>Ducky</td>
-                                       <td>Ducky</td>
-                                       <td className="button-container">
-                                            <button type="button" className="btn button_style btn-inverse-primary waves-effect waves-light">EDIT</button>
-                                            <button type="button" className="btn button_style btn-inverse-danger waves-effect waves-light">DELETE</button>
-                                       </td>
-                                    </tr>
-                                 </tbody>
+                                 {
+                                    farms !== null ? farms.map(farm => (
+                                       <ManageFarmTableRow farm={farm} key={farm.id} />
+                                    )) : <span>No data to display</span>
+                                 }
+                                    
                               </table>
                            </div>
                         </div>

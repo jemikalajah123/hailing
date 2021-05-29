@@ -1,12 +1,19 @@
-import React , { useState, useEffect } from 'react'
+import React , { useState, useEffect, useContext } from 'react'
 import { Link } from 'react-router-dom'
+import farmerContext from '../../context/farmer/farmerContext'
 
 const AddFarmForm = () => {
+
+    const FarmerContext = useContext(farmerContext);
+
+    const { getFarmType, getStates, getLga, farmLgas, farmStates, farmTypes } = FarmerContext;
 
     useEffect(() => { 
 
         //Get users location when the component mounts
-       getLocation();
+        getLocation();
+        getFarmType();
+        getStates();
        //eslint-disable-next-line
     }, []);
 
@@ -18,7 +25,12 @@ const AddFarmForm = () => {
     const [farmAddress, setFarmAddress] = useState('');
     const [longitude, setLongitude] = useState('');
     const [latitude, setLatitude] = useState('');
-    const [status, setStatus] = useState(0);
+
+
+    //If State is not empty, make the call to get Local Government
+    if(farmState !== ''){
+        getLga(farmState);
+    }
 
    
     //Get Users location
@@ -52,7 +64,6 @@ const AddFarmForm = () => {
             farmAddress,
             longitude,
             latitude,
-            status
         }
 
     }
@@ -91,17 +102,43 @@ const AddFarmForm = () => {
                                             <label htmlFor="farmName" className="form-control-label">Farm Name</label>
                                             <input type="text" className="form-control" name='farmName' value={farmName} onChange={e => setFarmName(e.target.value)}  placeholder="Ajayi Farms" />
                                         </div>
-                                        <div className="form-group">
-                                            <label htmlFor="farmType" className="form-control-label">Farm Type</label>
-                                            <input type="text" className="form-control" name='farmType' value={farmType} onChange={e => setFarmType(e.target.value)}  placeholder="Cocoa" />
+                                        <div class="form-group">
+                                            <label htmlFor="farmType" class="form-control-label">Farm Type</label>
+                                                <select class="form-control " name="farmType" id="farmType" onChange={e => setFarmType(e.target.value)}>
+                                                {farmTypes !== null ?
+                                                        farmTypes.map(farmType => (
+                                                            <option value={farmType.id} key={farmType.id}>{farmType.name}</option>
+                                                        )) 
+                                                    : <option>States could not be loaded</option>
+                                                    }
+                                                    
+                                                </select>
                                         </div>
-                                        <div className="form-group">
-                                            <label htmlFor="farmState" className="form-control-label">State</label>
-                                            <input type="text" className="form-control" name='farmState' value={farmState} onChange={e => setFarmState(e.target.value)}  placeholder="Lagos" />
+                                       
+                                        <div class="form-group">
+                                            <label htmlFor="farmState" class="form-control-label">Farm State</label>
+                                                <select class="form-control " name="farmState" id="farmState" onChange={e => setFarmState(e.target.value)}>
+                                                    {farmStates !== null ?
+                                                        farmStates.map(farmState => (
+                                                            <option value={farmState.id} key={farmState.id}>{farmState.name}</option>
+                                                        )) 
+                                                    : <option>States could not be loaded</option>
+                                                    }
+                                                    
+                                                </select>
                                         </div>
-                                        <div className="form-group">
-                                            <label htmlFor="farmLga" className="form-control-label">LGA</label>
-                                            <input type="text" className="form-control" name='farmLga' value={farmLga} onChange={e => setFarmLga(e.target.value)}  placeholder="Ikeja" />
+                                        
+                                        <div class="form-group">
+                                            <label htmlFor="farmLga" class="form-control-label">Farm Lga</label>
+                                                <select class="form-control " name="farmLga" id="farmState" onChange={e => setFarmLga(e.target.value)}>
+                                                    {farmLgas !== null ?
+                                                        farmLgas.map(farmLga => (
+                                                            <option value={farmLga.id} key={farmLga.id}>{farmLga.name}</option>
+                                                        )) 
+                                                    : <option>Select a state</option>
+                                                    }
+                                                    
+                                                </select>
                                         </div>
                                         <div className="form-group">
                                             <label htmlFor="farmAddress" className="form-control-label">Address</label>
