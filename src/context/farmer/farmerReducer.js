@@ -4,7 +4,8 @@ import{
     FARM_TYPE,
     FARM_STATE,
     FARM_LGA,
-    GET_FARMS
+    GET_FARMS,
+    ADD_FARM
 } from '../types'
 
 const farmerReducer = (state, action) => {
@@ -34,6 +35,10 @@ const farmerReducer = (state, action) => {
             return {
                 ...state,
                 farms: action.payload
+            }
+        case ADD_FARM:
+            return {
+                farms: [action.payload,...state.farms]
             }
         case FARM_ERROR:
             return {

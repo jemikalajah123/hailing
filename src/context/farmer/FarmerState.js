@@ -8,7 +8,8 @@ import{
     FARM_TYPE,
     FARM_STATE,
     FARM_LGA,
-    GET_FARMS
+    GET_FARMS,
+    ADD_FARM
 } from '../types'
 
 
@@ -33,6 +34,29 @@ const FarmerState = props => {
             authorization: token
         }
     })
+
+    //Add Farm
+    const addFarm = async farm => {
+        
+        const config = {
+            headers: {
+                'Content-Type' : 'application/json'
+            }
+        }
+
+        try {
+            const res = await authAxios.post('https://hailing-backend.herokuapp.com/user/farmer/add_farm', farm, config);
+            dispatch({ 
+                type: ADD_FARM, 
+                payload: res.data.data
+               });
+        } catch (error) {
+            dispatch({ 
+                type: FARM_ERROR ,
+                payload: error
+               })
+        }
+    }
 
     //Get Farm Type
     const getFarmType = async () => {
@@ -112,7 +136,8 @@ const FarmerState = props => {
             getFarmType,
             getStates,
             getLga,
-            getFarms
+            getFarms,
+            addFarm
         }}>
             {props.children}
     </farmerContext.Provider>
