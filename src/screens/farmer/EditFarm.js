@@ -7,24 +7,28 @@ const EditFarm = () => {
 
     const FarmerContext = useContext(farmerContext);
 
-    const { current, farmTypes, updateFarm, getFarmType } = FarmerContext;
+    const { getFarmType, farmTypes,  current } = FarmerContext;
 
     useEffect(() => { 
+
         getFarmType();
        //eslint-disable-next-line
     }, []);
 
-    const [farmName, setFarmName] = useState('');
+    //Initialize states for the input values
+    const [farmName, setFarmName] = useState(current.farm_name);
     const [farmType, setFarmType] = useState('');
-    const [farmAddress, setFarmAddress] = useState('');
+    const [farmAddress, setFarmAddress] = useState(current.address);
+    const [longitude] = useState(current.longitude);
+    const [latitude] = useState(current.latitude);
+    const [id] = useState(current.id);
 
-    if(current !== null){
-        var longitude = current.longitude;
-        var latitude = current.latitude;
-        var id = current.id;
+    for(var a in current){
+        console.log("current in edit farm " + current[a])
     }
-    
+
     const onSubmit = () => {
+        
         const newFarm = {
             id,
             farmName,
@@ -32,10 +36,11 @@ const EditFarm = () => {
             farmAddress,
             longitude,
             latitude,
-         }
-
-        updateFarm(newFarm);
+        }
+        console.log("from onSubmit "+ newFarm)
+        //updateFarm(newFarm);
     }
+
 
     return (
         
@@ -63,42 +68,47 @@ const EditFarm = () => {
                     </div>
                 </div>
                {/* <!-- Row end --> */}
+
                 {/* Form Input Begins */}
                 <div className="row">
                         <div className="col-md-12 ">
                             <div className="card">  
                                 <div className="card-block">
-                                {current !== null ?(
-                                    <form onSubmit={onSubmit}>
-                                        <div className="form-group">
-                                            <label htmlFor="farmName" className="form-control-label">Farm Name</label>
-                                            <input type="text" className="form-control" name='farmName' onChange={e => setFarmName(e.target.value)} value={current.farm_name} />
-                                        </div>
-                                        <div class="form-group">
-                                            <label htmlFor="farmType" class="form-control-label">Farm Type</label>
-                                                <select class="form-control " name="farmType" id="farmType" onChange={e => setFarmType(e.target.value)}>
-                                                {farmTypes !== null ?
-                                                        farmTypes.map(farmType => (
-                                                            <option value={farmType.id} key={farmType.id}>{farmType.name}</option>
-                                                        )) 
-                                                    : <option>States could not be loaded</option>
-                                                    }
-                                                    
-                                                </select>
-                                        </div>
- 
-                                        <div className="form-group">
-                                            <label htmlFor="farmAddress" className="form-control-label">Farm Address</label>
-                                            <input type="text" className="form-control" name='farmAddress' onChange={e => setFarmAddress(e.target.value)} value={current.address} />
-                                        </div>
-                                        <button type="submit" className="btn btn-success waves-effect waves-light m-r-30">Update Farm</button>
-                                    </form>
-                                     ) : <span>No farm selected</span>}
+                                    {
+                                        current !== null ? (
+                                        <form onSubmit={onSubmit}>
+                                            <div className="form-group">
+                                                <label htmlFor="farmName" className="form-control-label">Farm Name</label>
+                                                <input type="text" className="form-control" name='farmName' defaultValue={current.farm_name} onChange={e => setFarmName(e.target.value)}  placeholder="Ajayi Farms" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label htmlFor="farmType" class="form-control-label">Farm Type</label>
+                                                    <select class="form-control " name="farmType" id="farmType" onChange={e => setFarmType(e.target.value)}>
+                                                    {farmTypes !== null ?
+                                                            farmTypes.map(farmType => (
+                                                                <option value={farmType.id} key={farmType.id}>{farmType.name}</option>
+                                                            )) 
+                                                        : <option>Farm Types could not be loaded</option>
+                                                        }
+                                                        
+                                                    </select>
+                                            </div>  
+                                        
+                                            <div className="form-group">
+                                                <label htmlFor="farmAddress" className="form-control-label">Address</label>
+                                                <input type="text" className="form-control" name='farmAddress' defaultValue={current.address} onChange={e => setFarmAddress(e.target.value)}  placeholder="No 3, Hebert Perkins Street, Lekki" />
+                                            </div>
+                                            <button type="submit" className="btn btn-success waves-effect waves-light m-r-30">Update Farm</button>
+                                        </form>
+                                        ) : <span>No farm selected</span>
+                                    }
+                                    
                                 </div>
                             </div>
                         </div>
                     </div>
                 {/* Form Input Ends */}
+                
                
                 </div>
             </div>

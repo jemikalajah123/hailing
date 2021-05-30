@@ -72,6 +72,7 @@ const FarmerState = props => {
 
         try {
             const res = await authAxios.put(`https://hailing-backend.herokuapp.com/user/farmer/edit_farm/${farm.id}`, farm, config);
+            console.log("from state "+res.data.data)
             dispatch({ 
                 type: UPDATE_FARM, 
                 payload: res.data.data

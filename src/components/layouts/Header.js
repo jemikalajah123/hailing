@@ -24,24 +24,24 @@ const Header = () => {
                                 <li className="not-head">You have <b className="text-primary">4</b> new notifications.
                                 </li>
                                 <li className="bell-notification">
-                                    <a href="javascript:;" className="media">
-                                        <span className="media-left media-icon"><img className="img-circle" src="assets/images/avatar-1.png" alt="User Image"></img></span>
+                                    <a href="!#" className="media">
+                                        <span className="media-left media-icon"><img className="img-circle" src="assets/images/avatar-1.png" alt=""></img></span>
                                         <div className="media-body"><span
                                             className="block">Lisa sent you a mail</span><span
                                             className="text-muted block-time">2min ago</span></div>
                                     </a>
                                 </li>
                                 <li className="bell-notification">
-                                    <a href="javascript:;" className="media">
-                                        <span className="media-left media-icon"><img className="img-circle" src="assets/images/avatar-2.png" alt="User Image"></img></span>
+                                    <a href="!#" className="media">
+                                        <span className="media-left media-icon"><img className="img-circle" src="assets/images/avatar-2.png" alt=""></img></span>
                                         <div className="media-body"><span
                                             className="block">Server Not Working</span><span
                                             className="text-muted block-time">20min ago</span></div>
                                     </a>
                                 </li>
                                 <li className="bell-notification">
-                                    <a href="javascript:;" className="media"><span className="media-left media-icon">
-                                        <img className="img-circle" src="assets/images/avatar-3.png" alt="User Image"></img></span>
+                                    <a href="!#" className="media"><span className="media-left media-icon">
+                                        <img className="img-circle" src="assets/images/avatar-3.png" alt=""></img></span>
                                         <div className="media-body"><span
                                             className="block">Transaction xyz complete</span><span
                                             className="text-muted block-time">3 hours ago</span></div>
@@ -69,18 +69,18 @@ const Header = () => {
                             <a href="#!" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"
                                className="dropdown-toggle drop icon-circle drop-image">
                                 <span><img className="img-circle avatar" src="assets/images/avatar-1.png"
-                                           alt="User Image"></img></span>
+                                           alt=""></img></span>
                                 <span>John <b>Doe</b> <i className=" icofont icofont-simple-down"></i></span>
 
                             </a>
                             <ul className="dropdown-menu settings-menu">
                                 <li><a href="#!"><i className="icon-settings"></i> Settings</a></li>
-                                <li><a href="#"><i className="icon-user"></i> Profile</a></li>
-                                <li><a href="#"><i className="icon-envelope-open"></i> My Messages</a></li>
+                                <li><a href="#!"><i className="icon-user"></i> Profile</a></li>
+                                <li><a href="#!"><i className="icon-envelope-open"></i> My Messages</a></li>
                                 <li className="p-0">
                                     <div className="dropdown-divider m-0"></div>
                                 </li>
-                                <li><a href="#"><i className="icon-lock"></i> Lock Screen</a></li>
+                                <li><a href="#!"><i className="icon-lock"></i> Lock Screen</a></li>
                                 <li><a href="login1.html"><i className="icon-logout"></i> Logout</a></li>
 
                             </ul>

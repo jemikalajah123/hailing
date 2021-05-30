@@ -55,7 +55,7 @@ const FarmerDashboard = () => {
                     <div class="col-lg-4">
                         <div class="card">
                             <div class="user-block-2">
-                                <img class="img-fluid" src="assets/images/widget/user-1.png" alt="user-header"></img>
+                                <img class="img-fluid" src="assets/images/widget/user-1.png" alt=""></img>
                                     <h5>Josephin Villa</h5>
                                     <h6>Farmer</h6>
                             </div>
@@ -104,10 +104,10 @@ const FarmerDashboard = () => {
                     <div class="col-xl-4 col-lg-12 grid-item">
                         <div class="card">
                             <div class="card-block horizontal-card-img d-flex">
-                                <img class="media-object img-circle" src="assets/images/avatar-3.png" alt="Generic placeholder image"></img>
+                                <img class="media-object img-circle" src="assets/images/avatar-3.png" alt=""></img>
                                     <div class="d-inlineblock  p-l-20">
                                         <h6>Josephin Doe</h6>
-                                        <a href="#">contact@admin.com</a>
+                                        <a href="!#">contact@admin.com</a>
                                     </div>
                             </div>
                         </div>
@@ -115,10 +115,10 @@ const FarmerDashboard = () => {
                     <div class="col-xl-4 col-lg-12 grid-item">
                         <div class="card">
                             <div class="card-block horizontal-card-img d-flex">
-                                <img class="media-object img-circle" src="assets/images/lockscreen.png" alt="Generic placeholder image"></img>
+                                <img class="media-object img-circle" src="assets/images/lockscreen.png" alt=""></img>
                                     <div class="d-inlineblock  p-l-20">
                                         <h6>Ester Doe</h6>
-                                        <a href="#">contact@admin.com</a>
+                                        <a href="!#">contact@admin.com</a>
                                     </div>
                             </div>
                         </div>
