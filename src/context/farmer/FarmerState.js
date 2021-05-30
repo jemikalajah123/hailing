@@ -33,6 +33,8 @@ const FarmerState = props => {
     //Token
     var token  = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNGQ1MTNkM2QiLCJyb2xlIjoiNGQ1MTNkM2QiLCJpYXQiOjE2MjIwMDIwNDR9.fdlBef1fihWEaWEWflD1gN3luUHITeKvtGiFCkQIO8s";
 
+    const baseUrl = "https://hailing-backend.herokuapp.com";
+
     //Set up axios headers
     const authAxios = axios.create({
         headers: {
@@ -50,7 +52,7 @@ const FarmerState = props => {
         }
 
         try {
-            const res = await authAxios.post('https://hailing-backend.herokuapp.com/user/farmer/add_farm', farm, config);
+            const res = await authAxios.post(`${baseUrl}/user/farmer/add_farm`, farm, config);
             dispatch({ 
                 type: ADD_FARM, 
                 payload: res.data.data
@@ -72,7 +74,7 @@ const FarmerState = props => {
         }
 
         try {
-            const res = await authAxios.put(`https://hailing-backend.herokuapp.com/user/farmer/edit_farm/${farm.id}`, farm, config);
+            const res = await authAxios.put(`${baseUrl}/user/farmer/edit_farm/${farm.id}`, farm, config);
             console.log("from state "+res.data.data)
             dispatch({ 
                 type: UPDATE_FARM, 
@@ -106,7 +108,7 @@ const FarmerState = props => {
     //Get Farm Type
     const getFarmType = async () => {
         try {
-            const res = await authAxios.get('https://hailing-backend.herokuapp.com/user/farmer/get_farm_type')
+            const res = await authAxios.get(`${baseUrl}/user/farmer/get_farm_type`)
             dispatch({
                 type: FARM_TYPE,
                 payload: res.data.data
@@ -122,7 +124,7 @@ const FarmerState = props => {
     //Get States
     const getStates = async () => {
         try {
-            const res = await axios.get('https://hailing-backend.herokuapp.com/generic/get_states')
+            const res = await axios.get(`${baseUrl}/generic/get_states`)
             dispatch({
                 type: FARM_STATE,
                 payload: res.data.data
@@ -137,7 +139,7 @@ const FarmerState = props => {
     //Get LGA'S
     const getLga = async state_id => {
         try {
-            const res = await axios.get(`https://hailing-backend.herokuapp.com/generic/get_lga/${state_id}`)
+            const res = await axios.get(`${baseUrl}/generic/get_lga/${state_id}`)
             dispatch({
                 type: FARM_LGA,
                 payload: res.data.data
@@ -153,7 +155,7 @@ const FarmerState = props => {
     //Get Farms
     const getFarms = async () => {
         try {
-            const res = await authAxios.get('https://hailing-backend.herokuapp.com/user/farmer/get_farms')
+            const res = await authAxios.get(`${baseUrl}/user/farmer/get_farms`)
             dispatch({
                 type: GET_FARMS,
                 payload: res.data.data
