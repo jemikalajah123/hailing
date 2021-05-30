@@ -12,7 +12,8 @@ import{
     ADD_FARM,
     SET_CURRENT,
     CLEAR_CURRENT,
-    UPDATE_FARM
+    UPDATE_FARM,
+    DELETE_FARM
 } from '../types'
 
 
@@ -83,6 +84,23 @@ const FarmerState = props => {
                 payload: error
                })
         }
+    }
+
+    //Delete Farm
+    const deleteFarm = async id => {
+        try {
+            await authAxios.delete(``);
+            dispatch({
+                 type: DELETE_FARM,
+                  payload: id 
+                })
+        } catch (error) {
+            dispatch({ 
+                type: FARM_ERROR ,
+                payload: error
+               })
+        }
+        
     }
 
     //Get Farm Type
@@ -183,7 +201,8 @@ const FarmerState = props => {
             addFarm,
             setCurrent,
             clearCurrent,
-            updateFarm
+            updateFarm,
+            deleteFarm
         }}>
             {props.children}
     </farmerContext.Provider>

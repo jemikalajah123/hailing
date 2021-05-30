@@ -7,21 +7,29 @@ const ManageFarmTableRow = ( { farm } ) => {
 
    const FarmerContext = useContext(farmerContext);
 
-   const { setCurrent } = FarmerContext;
+   const { setCurrent, deleteFarm, clearCurrent } = FarmerContext;
+
+   const { id, farm_name, farm_type, state, cluster, city, address } = farm;
+
+   const onDelete = () => {
+
+        deleteFarm(id)
+        clearCurrent()
+   }
     
     return (
         <tbody>
             <tr>
-                <td>{farm.id}</td>
-                <td>{farm.farm_name}</td>
-                <td>{farm.farm_type.name}</td>
-                <td>{farm.state.name}</td>
-                <td>{farm.cluster.name}</td>
-                <td>{farm.city.name}</td>
-                <td>{farm.address}</td>
+                <td>{id}</td>
+                <td>{farm_name}</td>
+                <td>{farm_type.name}</td>
+                <td>{state.name}</td>
+                <td>{cluster.name}</td>
+                <td>{city.name}</td>
+                <td>{address}</td>
                 <td className="button-container">
                     <Link  to="/farmer/farm/manage/edit" onClick={() => setCurrent(farm)} type="button" className="btn button_style btn-inverse-primary waves-effect waves-light">EDIT</Link>
-                    <button type="button" className="btn button_style btn-inverse-danger waves-effect waves-light">DELETE</button>
+                    <button type="button" onClick={onDelete} className="btn button_style btn-inverse-danger waves-effect waves-light">DELETE</button>
                 </td>
             </tr>
         </tbody>

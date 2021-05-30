@@ -8,7 +8,8 @@ import{
     ADD_FARM,
     SET_CURRENT,
     CLEAR_CURRENT,
-    UPDATE_FARM
+    UPDATE_FARM,
+    DELETE_FARM
 } from '../types'
 
 const farmerReducer = (state, action) => {
@@ -47,6 +48,11 @@ const farmerReducer = (state, action) => {
             return {
                 ...state,
                 farms: state.farms.map(farm => farm.id === action.payload.id ? action.payload : farm)
+            }
+        case DELETE_FARM:
+            return {
+                ...state,
+                farms: state.farms.filter(farm => farm._id !== action.payload) 
             }
         case SET_CURRENT:
             return {

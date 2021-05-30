@@ -8,3 +8,4 @@ export const ADD_FARM = 'ADD_FARM';
 export const SET_CURRENT = 'SET_CURRENT';
 export const CLEAR_CURRENT = 'CLEAR_CURRENT';
 export const UPDATE_FARM = 'UPDATE_FARM';
+export const DELETE_FARM = 'DELETE_FARM';
