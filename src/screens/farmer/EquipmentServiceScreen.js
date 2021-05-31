@@ -1,10 +1,20 @@
-import React, { Fragment } from 'react';
+import React, {Fragment, useContext, useEffect} from 'react';
 import FarmerSideBar from './FarmerSideBar';
-import EquipmentCard from './EquipmentCard';
+import EquipmentServiceCard from './EquipmentServiceCard';
 import { Row, Col } from 'react-bootstrap';
 import {Link} from "react-router-dom";
+import farmerContext from "../../context/farmer/farmerContext";
 
-const RequestScreen = () => {
+const EquipmentServiceScreen = () => {
+
+    const FarmerContext = useContext(farmerContext);
+
+    const { getEquipmentServices, equipmentServices } = FarmerContext;
+
+    useEffect(() => {
+        getEquipmentServices()
+        //eslint-disable-next-line
+    }, []);
     return (
         <Fragment>
             <FarmerSideBar />
@@ -27,7 +37,11 @@ const RequestScreen = () => {
                     {/* <!-- Row end --> */}
                     <Row>
                         <Col sm={12} md={6} lg={4} xl={3}>
-                            <EquipmentCard />
+                            {
+                                equipmentServices !== null ? equipmentServices.map(equipmentService => (
+                                    <EquipmentServiceCard equipmentService={equipmentService} key={equipmentService.id} />
+                                )) : <span>No data to display</span>
+                            }
                         </Col>
                     </Row>
                 </div>
@@ -36,4 +50,4 @@ const RequestScreen = () => {
     )
 }
 
-export default RequestScreen
+export default EquipmentServiceScreen

@@ -8,7 +8,13 @@ import{
     FARM_TYPE,
     FARM_STATE,
     FARM_LGA,
-    GET_FARMS
+    GET_FARMS,
+    EQUIPMENT_LIST_SUCCESS,
+    EQUIPMENT_LIST_FAIL,
+    EQUIPMENT_CREATE_SUCCESS,
+    EQUIPMENT_CREATE_FAIL,
+    EQUIPMENT_SERVICE_LIST_SUCCESS,
+    EQUIPMENT_REQUEST_LIST_SUCCESS
 } from '../types'
 
 
@@ -18,11 +24,15 @@ const FarmerState = props => {
         farmTypes: null,
         farmStates: null,
         farmLgas: null,
+        equipments: null,
+        equipmentServices: null,
+        equipmentRequests: null,
         farms: null,
         error: null
     }
 
     const [ state, dispatch ] = useReducer(farmerReducer, initialState);
+    const url = 'https://hailing-backend.herokuapp.com/';
 
     //Token
     var token  = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNGQ1MTNkM2QiLCJyb2xlIjoiNGQ1MTNkM2QiLCJpYXQiOjE2MjIwMDIwNDR9.fdlBef1fihWEaWEWflD1gN3luUHITeKvtGiFCkQIO8s";
@@ -33,6 +43,70 @@ const FarmerState = props => {
             authorization: token
         }
     })
+
+
+    //Get Farm Equipments
+    const getEquipments = async id => {
+        try {
+            const res = await authAxios.get(url + `user/farmer/get_equipment_service_equipments/${id}`)
+            dispatch({
+                type: EQUIPMENT_LIST_SUCCESS,
+                payload: res.data.data
+            })
+        } catch (error) {
+            dispatch({
+                type: EQUIPMENT_LIST_FAIL,
+                payload: error
+            })
+        }
+    }
+
+    //Get Farm Equipment Service
+    const getEquipmentServices = async () => {
+        try {
+            const res = await authAxios.get(url + 'user/farmer/get_equipment_service_settings')
+            dispatch({
+                type: EQUIPMENT_SERVICE_LIST_SUCCESS,
+                payload: res.data.data
+            })
+        } catch (error) {
+            dispatch({
+                type: EQUIPMENT_LIST_FAIL,
+                payload: error
+            })
+        }
+    }
+
+    //Get Farm Equipment Requests
+    const getEquipmentRequests = async () => {
+        try {
+            const res = await authAxios.get(url + 'user/farmer/equipment_requests')
+            console.log(res);
+            dispatch({
+                type: EQUIPMENT_REQUEST_LIST_SUCCESS,
+                payload: res.data.data
+            })
+        } catch (error) {
+            dispatch({
+                type: EQUIPMENT_LIST_FAIL,
+                payload: error
+            })
+        }
+    }
+
+    const createEquipmentRequest = async () => {
+        try {
+            const res = await authAxios.post(url + 'user/farmer/request_equipment')
+            dispatch({
+                type: EQUIPMENT_CREATE_SUCCESS,
+            })
+        } catch (error) {
+            dispatch({
+                type: EQUIPMENT_CREATE_FAIL,
+                payload: error
+            })
+        }
+    }
 
     //Get Farm Type
     const getFarmType = async () => {
@@ -108,11 +182,18 @@ const FarmerState = props => {
             farmStates: state.farmStates,
             farmLgas: state.farmLgas,
             farms: state.farms,
+            equipments: state.equipments,
+            equipmentServices: state.equipmentServices,
+            equipmentRequests: state.equipmentRequests,
             setLoading,
             getFarmType,
             getStates,
             getLga,
-            getFarms
+            getFarms,
+            createEquipmentRequest,
+            getEquipmentRequests,
+            getEquipmentServices,
+            getEquipments
         }}>
             {props.children}
     </farmerContext.Provider>

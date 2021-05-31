@@ -9,11 +9,39 @@ import {
     Card,
     Form,
 } from 'react-bootstrap';
+import { PaystackConsumer } from 'react-paystack';
 import Loader from '../../components/Loader';
 import Message from '../../components/Message';
 
 
+
 const Checkout = ({ match, history }) => {
+
+    const config = {
+        reference: (new Date()).getTime(),
+        email: "user@example.com",
+        amount: 20000,
+        publicKey: 'pk_test_dsdfghuytfd2345678gvxxxxxxxxxx',
+    };
+
+    // you can call this function anything
+    const handleSuccess = (reference) => {
+        // Implementation for whatever you want to do with reference and after success call.
+        console.log(reference);
+    };
+
+    // you can call this function anything
+    const handleClose = () => {
+        // implementation for  whatever you want to do when the Paystack dialog closed.
+        console.log('closed')
+    }
+
+    const componentProps = {
+        ...config,
+        text: 'Starting Payment',
+        onSuccess: (reference) => handleSuccess(reference),
+        onClose: handleClose
+    };
 
     const submitHandler = (e) => {
         e.preventDefault();
@@ -70,13 +98,9 @@ const Checkout = ({ match, history }) => {
                                                     <option value='3'>3 - Good</option>>
                                                 </Form.Control>
                                             </Form.Group>
-
-                                            <Button
-                                                type='submit'
-                                                variant='primary'
-                                            >
-                                                Pay Now
-                                            </Button>
+                                            <PaystackConsumer {...componentProps} >
+                                                {({initializePayment}) => <button type='submit' variant='primary' onClick={() => initializePayment(handleSuccess, handleClose)}>Pay Now</button>}
+                                            </PaystackConsumer>
                                         </Form>
                                 </ListGroup.Item>
                             </ListGroup>

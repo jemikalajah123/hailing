@@ -1,7 +1,19 @@
-import React from 'react'
+import React, {useContext, useEffect} from 'react'
 import { Link } from 'react-router-dom'
+import farmerContext from "../../context/farmer/farmerContext";
+import ManageEquipmentTableRow from "./ManageEquipmentTableRow";
+
 
 const ManageEquipmentTable = () => {
+
+    const FarmerContext = useContext(farmerContext);
+
+    const { getEquipmentRequests, equipmentRequests } = FarmerContext;
+
+    useEffect(() => {
+        getEquipmentRequests()
+        //eslint-disable-next-line
+    }, []);
     return (
         <div className="wrapper">
             <div className="content-wrapper">
@@ -40,65 +52,18 @@ const ManageEquipmentTable = () => {
                                         <tr>
                                             <th>Farm Name</th>
                                             <th>Equipment Name</th>
+                                            <th>Service Price</th>
+                                            <th>Caution fee</th>
+                                            <th>Start Date</th>
                                             <th>Status</th>
-                                            <th>Amount</th>
-                                            <th>Return Date</th>
                                             <th>Hire Again</th>
                                         </tr>
                                         </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
-                                            <td>@mdo</td>
-                                            <td>Ducky</td>
-                                            <td>Ducky</td>
-                                            <td className="button-container">
-                                                <button type="button" className="btn button_style btn-inverse-danger waves-effect waves-light">Hire</button>
-                                            </td>
-
-                                        </tr>
-                                        <tr>
-                                            <td>Jacob</td>
-                                            <td>Thornton</td>
-                                            <td>@fat</td>
-                                            <td>Ducky</td>
-                                            <td>Ducky</td>
-                                            <td className="button-container">
-                                                <button type="button" className="btn button_style btn-inverse-danger waves-effect waves-light">Hire</button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Larry</td>
-                                            <td>Otto</td>
-                                            <td>@twitter</td>
-                                            <td>Ducky</td>
-                                            <td>Ducky</td>
-                                            <td className="button-container">
-                                                <button type="button" className="btn button_style btn-inverse-danger waves-effect waves-light">Hire</button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Jacob</td>
-                                            <td>Thornton</td>
-                                            <td>@fat</td>
-                                            <td>Ducky</td>
-                                            <td>Ducky</td>
-                                            <td className="button-container">
-                                                <button type="button" className="btn button_style btn-inverse-danger waves-effect waves-light">Hire</button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Jacob</td>
-                                            <td>Thornton</td>
-                                            <td>@fat</td>
-                                            <td>Ducky</td>
-                                            <td>Ducky</td>
-                                            <td className="button-container">
-                                                <button type="button" className="btn button_style btn-inverse-danger waves-effect waves-light">Hire</button>
-                                            </td>
-                                        </tr>
-                                        </tbody>
+                                        {
+                                            equipmentRequests !== null ? equipmentRequests.map(equipmentRequest => (
+                                                <ManageEquipmentTableRow equipmentRequest={equipmentRequest} key={equipmentRequest.id} />
+                                            )) : <span>No data to display</span>
+                                        }
                                     </table>
                                 </div>
                             </div>

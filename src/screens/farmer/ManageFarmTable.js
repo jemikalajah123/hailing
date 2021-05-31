@@ -16,8 +16,6 @@ const ManageFarmTable = () => {
      //eslint-disable-next-line
   }, []);
 
-  console.log(farms);
-
     return (
         <div className="wrapper">
             <div className="content-wrapper">
