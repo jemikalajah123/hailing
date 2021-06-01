@@ -14,7 +14,10 @@ import{
     EQUIPMENT_CREATE_SUCCESS,
     EQUIPMENT_CREATE_FAIL,
     EQUIPMENT_SERVICE_LIST_SUCCESS,
-    EQUIPMENT_REQUEST_LIST_SUCCESS
+    EQUIPMENT_REQUEST_LIST_SUCCESS,
+    USER_LOGOUT_SUCCESS,
+    USER_LOGIN_SUCCESS,
+    USER_REGISTER_SUCCESS
 } from '../types'
 
 
@@ -27,6 +30,7 @@ const FarmerState = props => {
         equipments: null,
         equipmentServices: null,
         equipmentRequests: null,
+        userinfo: null,
         farms: null,
         error: null
     }
@@ -43,6 +47,61 @@ const FarmerState = props => {
             authorization: token
         }
     })
+
+    const register = (name, email, password) => async () => {
+        try {
+            const res = await authAxios.post(
+                url + 'auth/signup',
+                { 'name': name, 'email': email, 'password': password },
+            )
+            dispatch({
+                type: USER_REGISTER_SUCCESS,
+                payload: res.data.data
+            })
+            dispatch({
+                type: USER_LOGIN_SUCCESS,
+                payload: res.data.data
+            })
+            localStorage.setItem('userInfo', JSON.stringify(res.data.data))
+
+        } catch (error) {
+            dispatch({
+                type:FARM_ERROR,
+                payload: error.response && error.response.data.detail
+                    ? error.response.data.detail
+                    : error.message,
+            })
+        }
+    }
+
+    const login = async (email, password) => {
+        try {
+            const res = await authAxios.post(
+                url + 'auth/user/login',
+                { email, password },
+            )
+            dispatch({
+                type: USER_LOGIN_SUCCESS,
+                payload: res.data.data
+            })
+
+            localStorage.setItem('userInfo', JSON.stringify(res.data.data))
+
+        } catch (error) {
+            dispatch({
+                type:FARM_ERROR,
+                payload: error.response && error.response.data.detail
+                    ? error.response.data.detail
+                    : error.message,
+            })
+        }
+    }
+
+    const logout = () => (dispatch) => {
+        localStorage.removeItem('userInfo')
+        dispatch({ type: USER_LOGOUT_SUCCESS })
+    }
+
 
 
     //Get Farm Equipments
@@ -183,6 +242,7 @@ const FarmerState = props => {
             farmLgas: state.farmLgas,
             farms: state.farms,
             equipments: state.equipments,
+            userInfo: state.userInfo,
             equipmentServices: state.equipmentServices,
             equipmentRequests: state.equipmentRequests,
             setLoading,
@@ -193,7 +253,10 @@ const FarmerState = props => {
             createEquipmentRequest,
             getEquipmentRequests,
             getEquipmentServices,
-            getEquipments
+            getEquipments,
+            login,
+            register,
+            logout
         }}>
             {props.children}
     </farmerContext.Provider>

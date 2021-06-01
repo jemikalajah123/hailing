@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 
 const Header = () => {
     return(
@@ -80,8 +81,7 @@ const Header = () => {
                                 <li className="p-0">
                                     <div className="dropdown-divider m-0"></div>
                                 </li>
-                                <li><a href="#"><i className="icon-lock"></i> Lock Screen</a></li>
-                                <li><a href="login1.html"><i className="icon-logout"></i> Logout</a></li>
+                                <li><Link to="/login"><i className="icon-logout"></i> Logout</Link></li>
 
                             </ul>
                         </li>

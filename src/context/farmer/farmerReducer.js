@@ -10,7 +10,10 @@ import{
     EQUIPMENT_CREATE_SUCCESS,
     EQUIPMENT_CREATE_FAIL,
     EQUIPMENT_SERVICE_LIST_SUCCESS,
-    EQUIPMENT_REQUEST_LIST_SUCCESS
+    EQUIPMENT_REQUEST_LIST_SUCCESS,
+    USER_LOGOUT_SUCCESS,
+    USER_LOGIN_SUCCESS,
+    USER_REGISTER_SUCCESS
 } from '../types'
 
 const farmerReducer = (state, action) => {
@@ -60,19 +63,36 @@ const farmerReducer = (state, action) => {
         case EQUIPMENT_LIST_SUCCESS:
             return {
                 ...state,
+                loading: false,
                 equipments: action.payload
             }
 
         case EQUIPMENT_SERVICE_LIST_SUCCESS:
             return {
                 ...state,
+                loading: false,
                 equipmentServices: action.payload
             }
 
         case EQUIPMENT_REQUEST_LIST_SUCCESS:
             return {
                 ...state,
+                loading: false,
                 equipmentRequests: action.payload
+            }
+        case USER_LOGOUT_SUCCESS:
+            return {}
+        case USER_LOGIN_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                userInfo: action.payload
+            }
+        case USER_REGISTER_SUCCESS:
+            return {
+                ...state,
+                loading: false,
+                userInfo: action.payload
             }
         default:
             return state;

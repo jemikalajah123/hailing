@@ -15,6 +15,8 @@ import InvestorScreen from "./screens/investor/InvestorScreen";
 import React from "react";
 import ManageEquipment from "./screens/farmer/ManageEquipment";
 import CheckoutScreen from "./screens/farmer/CheckoutScreen";
+import LoginScreen from "./screens/LoginScreen";
+import RegisterScreen from "./screens/RegisterScreen";
 
 const App = () => {
   return (
@@ -26,6 +28,8 @@ const App = () => {
                 <div className='App'>
                   <Header />
                     <Switch>
+                      <Route path='/login' component={LoginScreen} exact/>
+                      <Route path='/register' component={RegisterScreen} exact/>
                       <Route path='/farmer' component={FarmerScreen} exact/>
                       <Route path='/farmer/farm/equipment' component={EquipmentServiceScreen} exact/>
                       <Route path='/farmer/farm/equipment/view' component={ManageEquipment} exact/>
