@@ -20,3 +20,8 @@ export const USER_LOGOUT_SUCCESS = 'USER_LOGOUT_SUCCESS'
 export const USER_REGISTER_SUCCESS = 'USER_REGISTER_SUCCESS'
 
 export  const USER_DETAILS = 'USER_DETAILS'
+export const ADD_FARM = 'ADD_FARM';
+export const SET_CURRENT = 'SET_CURRENT';
+export const CLEAR_CURRENT = 'CLEAR_CURRENT';
+export const UPDATE_FARM = 'UPDATE_FARM';
+export const DELETE_FARM = 'DELETE_FARM';
