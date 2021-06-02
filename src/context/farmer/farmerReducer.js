@@ -13,7 +13,12 @@ import{
     EQUIPMENT_REQUEST_LIST_SUCCESS,
     USER_LOGOUT_SUCCESS,
     USER_LOGIN_SUCCESS,
-    USER_REGISTER_SUCCESS
+    USER_REGISTER_SUCCESS,
+    ADD_FARM,
+    SET_CURRENT,
+    CLEAR_CURRENT,
+    UPDATE_FARM,
+    DELETE_FARM
 } from '../types'
 
 const farmerReducer = (state, action) => {
@@ -43,6 +48,30 @@ const farmerReducer = (state, action) => {
             return {
                 ...state,
                 farms: action.payload
+            }
+        case ADD_FARM:
+            return {
+                farms: [action.payload,...state.farms]
+            }
+        case UPDATE_FARM:
+            return {
+                ...state,
+                farms: state.farms.map(farm => farm.id === action.payload.id ? action.payload : farm)
+            }
+        case DELETE_FARM:
+            return {
+                ...state,
+                farms: state.farms.filter(farm => farm._id !== action.payload) 
+            }
+        case SET_CURRENT:
+            return {
+                ...state,
+                current: action.payload
+            }
+        case CLEAR_CURRENT:
+            return {
+                ...state,
+                current: null
             }
         case FARM_ERROR:
         case EQUIPMENT_LIST_FAIL:

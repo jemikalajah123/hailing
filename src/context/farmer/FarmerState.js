@@ -17,7 +17,12 @@ import{
     EQUIPMENT_REQUEST_LIST_SUCCESS,
     USER_LOGOUT_SUCCESS,
     USER_LOGIN_SUCCESS,
-    USER_REGISTER_SUCCESS
+    USER_REGISTER_SUCCESS,
+    ADD_FARM,
+    SET_CURRENT,
+    CLEAR_CURRENT,
+    UPDATE_FARM,
+    DELETE_FARM
 } from '../types'
 
 
@@ -32,6 +37,7 @@ const FarmerState = props => {
         equipmentRequests: null,
         userInfo: null,
         farms: null,
+        current: null,
         error: null
     }
 
@@ -40,6 +46,8 @@ const FarmerState = props => {
 
     //Token
     var token  = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNGQ1MTNkM2QiLCJyb2xlIjoiNGQ1MTNkM2QiLCJpYXQiOjE2MjIwMDIwNDR9.fdlBef1fihWEaWEWflD1gN3luUHITeKvtGiFCkQIO8s";
+
+    const baseUrl = "https://hailing-backend.herokuapp.com";
 
     //Set up axios headers
     const authAxios = axios.create({
@@ -165,12 +173,73 @@ const FarmerState = props => {
                 payload: error
             })
         }
+    //Add Farm
+    const addFarm = async farm => {
+        
+        const config = {
+            headers: {
+                'Content-Type' : 'application/json'
+            }
+        }
+
+        try {
+            const res = await authAxios.post(`${baseUrl}/user/farmer/add_farm`, farm, config);
+            dispatch({ 
+                type: ADD_FARM, 
+                payload: res.data.data
+               });
+        } catch (error) {
+            dispatch({ 
+                type: FARM_ERROR ,
+                payload: error
+               })
+        }
+    }
+    //Update Farm
+    const updateFarm = async farm => {
+        
+        const config = {
+            headers: {
+                'Content-Type' : 'application/json'
+            }
+        }
+
+        try {
+            const res = await authAxios.put(`${baseUrl}/user/farmer/edit_farm/${farm.id}`, farm, config);
+            console.log("from state "+res.data.data)
+            dispatch({ 
+                type: UPDATE_FARM, 
+                payload: res.data.data
+               });
+        } catch (error) {
+            dispatch({ 
+                type: FARM_ERROR ,
+                payload: error
+               })
+        }
+    }
+
+    //Delete Farm
+    const deleteFarm = async id => {
+        try {
+            await authAxios.delete(``);
+            dispatch({
+                 type: DELETE_FARM,
+                  payload: id 
+                })
+        } catch (error) {
+            dispatch({ 
+                type: FARM_ERROR ,
+                payload: error
+               })
+        }
+        
     }
 
     //Get Farm Type
     const getFarmType = async () => {
         try {
-            const res = await authAxios.get('https://hailing-backend.herokuapp.com/user/farmer/get_farm_type')
+            const res = await authAxios.get(`${baseUrl}/user/farmer/get_farm_type`)
             dispatch({
                 type: FARM_TYPE,
                 payload: res.data.data
@@ -186,7 +255,7 @@ const FarmerState = props => {
     //Get States
     const getStates = async () => {
         try {
-            const res = await axios.get('https://hailing-backend.herokuapp.com/generic/get_states')
+            const res = await axios.get(`${baseUrl}/generic/get_states`)
             dispatch({
                 type: FARM_STATE,
                 payload: res.data.data
@@ -201,7 +270,7 @@ const FarmerState = props => {
     //Get LGA'S
     const getLga = async state_id => {
         try {
-            const res = await axios.get(`https://hailing-backend.herokuapp.com/generic/get_lga/${state_id}`)
+            const res = await axios.get(`${baseUrl}/generic/get_lga/${state_id}`)
             dispatch({
                 type: FARM_LGA,
                 payload: res.data.data
@@ -217,7 +286,7 @@ const FarmerState = props => {
     //Get Farms
     const getFarms = async () => {
         try {
-            const res = await authAxios.get('https://hailing-backend.herokuapp.com/user/farmer/get_farms')
+            const res = await authAxios.get(`${baseUrl}/user/farmer/get_farms`)
             dispatch({
                 type: GET_FARMS,
                 payload: res.data.data
@@ -228,6 +297,21 @@ const FarmerState = props => {
                 payload: error
             })
         }
+    }
+
+    //Set Current Farm
+    const setCurrent = farm => {
+        dispatch({ 
+            type: SET_CURRENT,
+            payload: farm 
+        })
+    }
+
+     //Clear Current Farm
+     const clearCurrent = () => {
+        dispatch({
+             type: CLEAR_CURRENT 
+        })
     }
     
     //Set Loading
@@ -245,6 +329,7 @@ const FarmerState = props => {
             userInfo: state.userInfo,
             equipmentServices: state.equipmentServices,
             equipmentRequests: state.equipmentRequests,
+            current: state.current,
             setLoading,
             getFarmType,
             getStates,
@@ -256,10 +341,16 @@ const FarmerState = props => {
             getEquipments,
             login,
             register,
-            logout
+            logout,
+            addFarm,
+            setCurrent,
+            clearCurrent,
+            updateFarm,
+            deleteFarm
         }}>
             {props.children}
     </farmerContext.Provider>
+}
 }
 
 export default FarmerState;

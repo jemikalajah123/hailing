@@ -7,6 +7,7 @@ import Header from './components/layouts/Header';
 import FarmerScreen from "./screens/farmer/FarmerScreen";
 import AddFarm from "./screens/farmer/AddFarm";
 import ManageFarm from "./screens/farmer/ManageFarm";
+import EditFarm from "./screens/farmer/EditFarm";
 import AdminScreen from "./screens/admin/AdminScreen";
 import EquipmentServiceScreen from "./screens/farmer/EquipmentServiceScreen";
 import EquipmentScreen from "./screens/farmer/EquipmentScreen";
@@ -37,6 +38,7 @@ const App = () => {
                       <Route path='/farmer/farm/equipment/:id' component={CheckoutScreen} exact/>
                       <Route path='/farmer/farm/add' component={AddFarm} exact/>
                       <Route path='/farmer/farm/manage' component={ManageFarm} exact/>
+                      <Route path='/farmer/farm/manage/edit' component={EditFarm} exact/>
                       <Route path='/admin' component={AdminScreen} />
                       <Route path='/operator' component={OperatorScreen} />
                       <Route path='/investor' component={InvestorScreen} />
