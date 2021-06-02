@@ -56,7 +56,7 @@ const Profile = () => {
                <div className="row">
                   <div className="col-sm-12 p-0">
                      <div className="main-header">
-                        <h4>Add Farm</h4>
+                        <h4>Update Profile</h4>
                         <ol className="breadcrumb breadcrumb-title breadcrumb-arrow">
                            <li className="breadcrumb-item"><a href="index.html"><i className="icofont icofont-home"></i></a>
                            </li>
