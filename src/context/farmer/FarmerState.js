@@ -173,6 +173,7 @@ const FarmerState = props => {
                 payload: error
             })
         }
+    }
     //Add Farm
     const addFarm = async farm => {
         
@@ -350,7 +351,6 @@ const FarmerState = props => {
         }}>
             {props.children}
     </farmerContext.Provider>
-}
 }
 
 export default FarmerState;
