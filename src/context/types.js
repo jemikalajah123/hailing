@@ -25,3 +25,5 @@ export const SET_CURRENT = 'SET_CURRENT';
 export const CLEAR_CURRENT = 'CLEAR_CURRENT';
 export const UPDATE_FARM = 'UPDATE_FARM';
 export const DELETE_FARM = 'DELETE_FARM';
+
+export const UPDATE_PROFILE = 'UPDATE_PROFILE';

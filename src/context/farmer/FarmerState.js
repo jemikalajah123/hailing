@@ -22,7 +22,8 @@ import{
     SET_CURRENT,
     CLEAR_CURRENT,
     UPDATE_FARM,
-    DELETE_FARM
+    DELETE_FARM,
+    UPDATE_PROFILE
 } from '../types'
 
 
@@ -174,6 +175,30 @@ const FarmerState = props => {
             })
         }
     }
+
+    //Update Profile
+    const updateProfile = async () => {
+        const config = {
+            headers: {
+                'Content-Type' : 'application/json'
+            }
+        }
+
+        try {
+            const res = await authAxios.put(`${baseUrl}/auth/user/update/profile`, config); //we need id to know which user to update
+
+            dispatch({ 
+                type: UPDATE_PROFILE, 
+                payload: res.data.data
+               });
+        } catch (error) {
+            dispatch({ 
+                type: FARM_ERROR ,
+                payload: error
+               })
+        }
+    }
+
     //Add Farm
     const addFarm = async farm => {
         
@@ -207,7 +232,7 @@ const FarmerState = props => {
 
         try {
             const res = await authAxios.put(`${baseUrl}/user/farmer/edit_farm/${farm.id}`, farm, config);
-            console.log("from state "+res.data.data)
+
             dispatch({ 
                 type: UPDATE_FARM, 
                 payload: res.data.data
@@ -347,7 +372,8 @@ const FarmerState = props => {
             setCurrent,
             clearCurrent,
             updateFarm,
-            deleteFarm
+            deleteFarm,
+            updateProfile
         }}>
             {props.children}
     </farmerContext.Provider>

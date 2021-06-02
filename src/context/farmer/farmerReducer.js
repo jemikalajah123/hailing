@@ -18,7 +18,8 @@ import{
     SET_CURRENT,
     CLEAR_CURRENT,
     UPDATE_FARM,
-    DELETE_FARM
+    DELETE_FARM,
+    UPDATE_PROFILE
 } from '../types'
 
 const farmerReducer = (state, action) => {
@@ -57,6 +58,11 @@ const farmerReducer = (state, action) => {
             return {
                 ...state,
                 farms: state.farms.map(farm => farm.id === action.payload.id ? action.payload : farm)
+            }
+        case UPDATE_PROFILE:
+            return {
+                ...state,
+                userInfo: state.farms.map(user => user.id === action.payload.id ? action.payload : user)
             }
         case DELETE_FARM:
             return {
