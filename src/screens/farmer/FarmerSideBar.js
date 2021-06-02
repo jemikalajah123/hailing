@@ -42,7 +42,7 @@ const FarmerSidebar = () => {
                     </li>
                     <hr></hr>
                     <li className="treeview">
-                        <a className="waves-effect waves-dark" href="!#"><i className="fas fa-user"></i><span>Profile</span></a>
+                        <a className="waves-effect waves-dark" href="#!"><i className="fas fa-user"></i><span>Profile</span></a>
                     </li>
                     <li>
                         <a className="waves-effect waves-dark" href="/farmer/change_password"><i className="fas fa-unlock-alt"></i>Change Password</a>
