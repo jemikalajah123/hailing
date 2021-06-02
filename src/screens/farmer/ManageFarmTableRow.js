@@ -9,7 +9,7 @@ const ManageFarmTableRow = ( { farm } ) => {
 
    const { setCurrent, deleteFarm, clearCurrent } = FarmerContext;
 
-   const { id, farm_name, farm_type, state, cluster, city, address } = farm;
+   const { id, farm_name, farm_type, state, lga, address } = farm;
 
    const onDelete = () => {
 
@@ -24,8 +24,7 @@ const ManageFarmTableRow = ( { farm } ) => {
                 <td>{farm_name}</td>
                 <td>{farm_type.name}</td>
                 <td>{state.name}</td>
-                <td>{cluster.name}</td>
-                <td>{city.name}</td>
+                <td>{lga.name}</td>
                 <td>{address}</td>
                 <td className="button-container">
                     <Link  to="/farmer/farm/manage/edit" onClick={() => setCurrent(farm)} type="button" className="btn button_style btn-inverse-primary waves-effect waves-light">EDIT</Link>

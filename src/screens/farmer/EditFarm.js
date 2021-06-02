@@ -7,21 +7,38 @@ const EditFarm = () => {
 
     const FarmerContext = useContext(farmerContext);
 
-    const { getFarmType, farmTypes,  current } = FarmerContext;
+    const { getFarmType, farmTypes,  current, updateFarm } = FarmerContext;
 
     useEffect(() => { 
 
         getFarmType();
+
+        if(current !== null) {
+            setFarmName(current.farm_name)
+            setFarmType(current.farm_type_id)
+            setFarmAddress(current.address)
+            setLongitude(current.longitude)
+            setLatitude(current.latitude)
+        }
+        else{
+            setFarmName('')
+            setFarmType('')
+            setFarmAddress('')
+            setLongitude('')
+            setLatitude('')
+        }
        //eslint-disable-next-line
-    }, []);
+    }, [FarmerContext, current]);
 
     //Initialize states for the input values
-    const [farmName, setFarmName] = useState(current.farm_name);
-    const [farmType, setFarmType] = useState('');
-    const [farmAddress, setFarmAddress] = useState(current.address);
-    const [longitude] = useState(current.longitude);
-    const [latitude] = useState(current.latitude);
-    const [id] = useState(current.id);
+    const [farmName, setFarmName] = useState('');
+    const [farmType, setFarmType] = useState(1);
+    const [farmAddress, setFarmAddress] = useState('');
+    const [longitude, setLongitude] = useState('');
+    const [latitude, setLatitude] = useState('');
+    const [id] = useState(2); //will change later
+
+   
 
     for(var a in current){
         console.log("current in edit farm " + current[a])
@@ -38,7 +55,7 @@ const EditFarm = () => {
             latitude,
         }
         console.log("from onSubmit "+ newFarm)
-        //updateFarm(newFarm);
+        updateFarm(newFarm);
     }
 
 

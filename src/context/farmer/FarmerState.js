@@ -223,7 +223,7 @@ const FarmerState = props => {
     //Delete Farm
     const deleteFarm = async id => {
         try {
-            await authAxios.delete(``);
+            await authAxios.delete(`${baseUrl}/user/farmer/remove_farm/${id}`);
             dispatch({
                  type: DELETE_FARM,
                   payload: id 

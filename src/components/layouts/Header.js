@@ -5,7 +5,6 @@ import farmerContext from "../../context/farmer/farmerContext";
 const Header = () => {
     const FarmerContext = useContext(farmerContext);
     const { logout, userInfo} = FarmerContext;
-    console.log(userInfo);
 
     const logoutHandler = () => {
         logout();

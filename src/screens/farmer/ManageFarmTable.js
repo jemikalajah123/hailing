@@ -57,7 +57,6 @@ const ManageFarmTable = () => {
                                        <th>FARM TYPE</th>
                                        <th>STATE</th>
                                        <th>LGA</th>
-                                       <th>CITY</th>
                                        <th>ADDRESS</th>
                                        <th>UPDATE/DELETE</th>
                                     </tr>

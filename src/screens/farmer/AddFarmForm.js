@@ -6,7 +6,7 @@ const AddFarmForm = () => {
 
     const FarmerContext = useContext(farmerContext);
 
-    const { getFarmType, getStates, getLga, farmLgas, farmStates, farmTypes } = FarmerContext;
+    const { getFarmType, getStates, getLga, farmLgas, farmStates, farmTypes, addFarm } = FarmerContext;
 
     useEffect(() => { 
 
@@ -22,6 +22,7 @@ const AddFarmForm = () => {
     const [farmType, setFarmType] = useState(1);
     const [farmState, setFarmState] = useState(1);
     const [farmLga, setFarmLga] = useState(1);
+    const [farmCity] = useState(4);
     const [farmAddress, setFarmAddress] = useState('');
     const [longitude, setLongitude] = useState('');
     const [latitude, setLatitude] = useState('');
@@ -61,13 +62,14 @@ const AddFarmForm = () => {
             farmType,
             farmState,
             farmLga,
+            farmCity,
             farmAddress,
             longitude,
             latitude,
         }
 
         console.log(newFarm)
-        //addFarm(newFarm);
+        addFarm(newFarm);
     }
 
     return (
