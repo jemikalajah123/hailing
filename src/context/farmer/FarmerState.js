@@ -30,7 +30,7 @@ const FarmerState = props => {
         equipments: null,
         equipmentServices: null,
         equipmentRequests: null,
-        userinfo: null,
+        userInfo: null,
         farms: null,
         error: null
     }

@@ -1,19 +1,10 @@
-import React, { useState, useEffect,useContext,useReducer } from 'react'
+import React, { useState, useEffect,useContext} from 'react'
 import {Link} from "react-router-dom";
 import farmerContext from "../../context/farmer/farmerContext";
-import farmerReducer from "../../context/farmer/farmerReducer";
 
 const Login= ({ location, history }) => {
     const FarmerContext = useContext(farmerContext);
-    const { login, userInfo} = FarmerContext;
-
-    const redirect = window.location.search ? location.search.split('=')[1] : '/farmer'
-
-    useEffect(() => {
-        if (userInfo) {
-            history.push(redirect)
-        }
-    }, [history, userInfo,redirect])
+    const { login} = FarmerContext;
 
     //Initialize states for the input values
     const [email, setEmail] = useState('');
@@ -74,7 +65,7 @@ const Login= ({ location, history }) => {
                                 </div>
                                 <div className="col-sm-12 col-xs-12 text-center">
                                     <span className="text-muted">Don't have an account?</span>
-                                    <Link to={redirect ? `/register?redirect=${redirect}` : '/register'} className="f-w-600 p-l-5">Sign up Now</Link>
+                                    <Link to= '/register' className="f-w-600 p-l-5">Sign up Now</Link>
                                 </div>
                             </form>
                         </div>
