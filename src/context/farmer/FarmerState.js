@@ -29,7 +29,7 @@ import{
 
 const FarmerState = props => {
     const initialState = {
-        loading: false,
+        loading: true,
         farmTypes: null,
         farmStates: null,
         farmLgas: null,

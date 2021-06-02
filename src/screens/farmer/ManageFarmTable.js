@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import Spinner from '../../components/layouts/Spinner'
 import farmerContext from '../../context/farmer/farmerContext'
 import ManageFarmTableRow from './ManageFarmTableRow'
 
@@ -7,7 +8,7 @@ const ManageFarmTable = () => {
 
    const FarmerContext = useContext(farmerContext);
 
-   const { getFarms, farms } = FarmerContext;
+   const { getFarms, farms, loading } = FarmerContext;
 
    useEffect(() => { 
 
@@ -15,6 +16,10 @@ const ManageFarmTable = () => {
       getFarms();
      //eslint-disable-next-line
   }, []);
+
+//   if(loading){
+//    return <Spinner />
+//   }
 
     return (
         <div className="wrapper">
@@ -62,9 +67,9 @@ const ManageFarmTable = () => {
                                     </tr>
                                  </thead>
                                  {
-                                    farms !== null ? farms.map(farm => (
+                                    farms !== null && !loading ? farms.map(farm => (
                                        <ManageFarmTableRow farm={farm} key={farm.id} />
-                                    )) : <span>No data to display</span>
+                                    )) : <Spinner />
                                  }
                                     
                               </table>

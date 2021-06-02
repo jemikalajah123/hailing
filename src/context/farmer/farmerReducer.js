@@ -48,7 +48,8 @@ const farmerReducer = (state, action) => {
         case GET_FARMS:
             return {
                 ...state,
-                farms: action.payload
+                farms: action.payload,
+                loading: false
             }
         case ADD_FARM:
             return {
