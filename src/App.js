@@ -8,6 +8,8 @@ import FarmerScreen from "./screens/farmer/FarmerScreen";
 import AddFarm from "./screens/farmer/AddFarm";
 import ManageFarm from "./screens/farmer/ManageFarm";
 import EditFarm from "./screens/farmer/EditFarm";
+import Profile from "./screens/farmer/profile/Profile";
+import NotFound from "./components/Notfound";
 import AdminScreen from "./screens/admin/AdminScreen";
 import EquipmentServiceScreen from "./screens/farmer/EquipmentServiceScreen";
 import EquipmentScreen from "./screens/farmer/EquipmentScreen";
@@ -39,9 +41,11 @@ const App = () => {
                       <Route path='/farmer/farm/add' component={AddFarm} exact/>
                       <Route path='/farmer/farm/manage' component={ManageFarm} exact/>
                       <Route path='/farmer/farm/manage/edit' component={EditFarm} exact/>
+                      <Route path='/farmer/profile' component={Profile} exact/>
                       <Route path='/admin' component={AdminScreen} />
                       <Route path='/operator' component={OperatorScreen} />
                       <Route path='/investor' component={InvestorScreen} />
+                      <Route component={NotFound} />
                     </Switch> 
                 </div>
               </Router>
